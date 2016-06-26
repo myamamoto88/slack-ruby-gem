@@ -7,7 +7,7 @@ require_relative 'endpoint/<%= f %>'
 module Slack
   module Endpoint
 <% files.each do |f| %>
-    include <%= f.capitalize %>
+    include <%= f.camelize %>
 <% end %>
   end
 end

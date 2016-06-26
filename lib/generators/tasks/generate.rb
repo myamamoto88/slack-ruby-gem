@@ -1,5 +1,6 @@
 require 'json-schema'
 require 'erubis'
+require 'active_support/core_ext/string/inflections'
 
 namespace :api do
   desc "update"
@@ -21,15 +22,16 @@ namespace :api do
     schema = JSON.parse(File.read(schema_path))
 
     data = Dir.glob(jsons).sort.each_with_object({}) do |path, result|
-      name = File.basename(path, ".json")
-      prefix, name = name.split(".")
-      next if prefix == "rtm"
-      result[prefix] ||= {}
+      parts = File.basename(path, ".json").split('.')
+      method = parts[-1]
+      group = (parts - [method]).join('_')
+      next if group == "rtm"
+      result[group] ||= {}
 
       parsed = JSON.parse(File.read(path))
       JSON::Validator.validate(schema, parsed, :insert_defaults => true)
- 
-      result[prefix][name] = parsed
+
+      result[group][method] = parsed
 
     end
 

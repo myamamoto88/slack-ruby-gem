@@ -2,7 +2,7 @@
 
 module Slack
   module Endpoint
-    module <%= group.capitalize %>
+    module <%= group.camelize %>
 <% names.each do |name, data| %>
       #
 <% data["desc"].lines.each do |l| %>
@@ -23,7 +23,7 @@ module Slack
         throw ArgumentError.new("Required arguments :<%= arg_name %> missing") if options[:<%= arg_name %>].nil?
 <% end %>
         options[:attachments] = options[:attachments].to_json if Hash === options[:attachments]
-        post("<%= group %>.<%= name %>", options)
+        post("<%= group.gsub(/_/, '.') %>.<%= name %>", options)
       end
 
 <% end %>

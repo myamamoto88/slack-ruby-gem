@@ -30,6 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'erubis', '~> 2.7.0'
   spec.add_development_dependency "json-schema"
   spec.add_development_dependency "pry"
+  spec.add_development_dependency "activesupport"
 
   spec.add_runtime_dependency "faraday", [">= 0.7", "< 0.10"]
   spec.add_runtime_dependency "faraday_middleware", "~> 0.8"

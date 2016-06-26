@@ -6,6 +6,7 @@ require_relative 'endpoint/channels'
 require_relative 'endpoint/chat'
 require_relative 'endpoint/dnd'
 require_relative 'endpoint/emoji'
+require_relative 'endpoint/files_comments'
 require_relative 'endpoint/files'
 require_relative 'endpoint/groups'
 require_relative 'endpoint/im'
@@ -19,6 +20,7 @@ require_relative 'endpoint/search'
 require_relative 'endpoint/stars'
 require_relative 'endpoint/team'
 require_relative 'endpoint/usergroups'
+require_relative 'endpoint/usergroups_users'
 require_relative 'endpoint/users'
 
 module Slack
@@ -29,6 +31,7 @@ module Slack
     include Chat
     include Dnd
     include Emoji
+    include FilesComments
     include Files
     include Groups
     include Im
@@ -42,6 +45,7 @@ module Slack
     include Stars
     include Team
     include Usergroups
+    include UsergroupsUsers
     include Users
   end
 end
